@@ -1,0 +1,17 @@
+<p>
+  See all the current recipes
+</p>
+
+<% @@recipes.each_with_index do |recipe, index| %>
+    <% done = recipe.done? ? "[X]" : "[ ]"%>
+  <li>
+    <%= "#{done} #{index + 1} -- #{recipe.name} -- #{recipe.description} -- #{recipe.rating} -- #{recipe.prep_time}" %>
+      <form action="/destroy" method="post">
+         <input type="hidden" name="index" value="<%=index%>">
+        <input type="Submit" value="Destroy">
+    </form>
+  </li>
+<% end %>
+
+
+<a href='/new'>Create new recipe</a>
